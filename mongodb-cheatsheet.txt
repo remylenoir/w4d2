@@ -1,0 +1,31 @@
+Simple query:
+
+{ title: 'Inception' }  // returns all movies who are titled Inception
+
+Queries with logical operators:
+
+{$and: [{year: '1995'}, {rate: '8.5}]} // returns all movies from 1995 that have a rating of 8.5
+{$or: [{year: '1995'}, {rate: '8.5}]} // returns all movies either from 1995 or that have a rating of 8.5
+{$nor: [{year: '1995'}, {rate: '8.5}]} // returns all movies that are neither from 1995 nor that have a rating of 8.5
+
+Comparison query operators:
+
+{ title: {$eq: 'Inception'}} // returns all movies who are titled Inception
+{ title: {$ne: 'Inception'}} // returns all movies who are not titled Inception (or not titled)
+{ title: {$exists: true}} // returns all movies who have a title field
+{ title: {$exists: false}} // returns all movies who don't have a title field
+{ rate: {$gte: '8.5'}} // returns all movies with a rate of 8.5 or higher
+{ rate: {$gt: '8.5'}} // returns all movies with a rate higher than 8.5
+{ rate: {$lte: '8.5'}} // returns all movies with a rate of 8.5 or lower
+{ rate: {$lt: '8.5'}} // returns all movies with a rate lower than 8.5
+
+{ year: {$type: 'string'}} // returns all movies who have a 'string' in the year field
+data types ['double', 'string', 'object', 'array', 'objectId', 'bool', 'date', 'null']
+
+Array query operators:
+
+{ genre: {$in: ['Drama', 'Comedy']}} // returns all movies that have a 'genre' array with either 'Drama', 'Comedy', or both
+{ genre: {$nin: ['Drama', 'Comedy']}} // returns all movies that have a 'genre' array with neither 'Drama' or 'Comedy'
+{ genre: {$all: ['Drama', 'Comedy']}} // returns all movies that have a 'genre' array with 'Drama' and 'Comedy'
+
+{ field: {$elemMatch: {subfield1: true, subfield2: false}}} // returns all documents that have a field with at least one element with true subfield1 and false subfield2
